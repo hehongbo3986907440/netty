@@ -19,7 +19,7 @@ public class WeCharClient {
         try{
             Bootstrap bootstrap = new Bootstrap();
             bootstrap.group(boosLoopGroup);
-            bootstrap.channel(NioSocketChannel.class).handler(null);
+            bootstrap.channel(NioSocketChannel.class).handler(new MyClientInitHandler());
 
             ChannelFuture channelFuture = bootstrap.connect("127.0.0.1",8899).sync();
 
