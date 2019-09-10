@@ -9,7 +9,7 @@ import io.netty.channel.group.DefaultChannelGroup;
 import io.netty.util.concurrent.GlobalEventExecutor;
 
 public class MyWeCharHandler extends ChannelInboundHandlerAdapter {
-    private ChannelGroup group = new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);
+    private static ChannelGroup group = new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);
     @Override
     public void channelRegistered(ChannelHandlerContext ctx) throws Exception {
         super.channelRegistered(ctx);
@@ -64,6 +64,7 @@ public class MyWeCharHandler extends ChannelInboundHandlerAdapter {
         group.writeAndFlush(ctx.channel().remoteAddress()+"加入");
         //添加进组里
         group.add(ctx.channel());
+        System.out.println(group.size());
     }
 
     @Override

@@ -1,0 +1,23 @@
+syntax = "proto2";
+
+package com.study.info;
+
+option java_package = "com.study.info";
+option java_outer_classname = "DataInfo";
+
+message Student{
+    required string name = 1;
+    optional int32 age = 2;
+    enum Sex{
+        MAN = 1;
+        WOMAN =2;
+    }
+    optional Sex sex = 3;
+
+    message Address{
+        optional string province = 1;
+        optional string city =2;
+        optional string addr = 3;
+    }
+    optional Address address = 4;
+}
